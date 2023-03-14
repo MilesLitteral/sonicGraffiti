@@ -4,6 +4,7 @@ module SonicGraffiti (main) where
 
 import Data.Binary
 -- import System
+-- import System.Subprocess
 
 type MP3     = String
 data JABCode = JABCode { byteData :: Int, metadata :: String } deriving (Show, Eq)
@@ -32,5 +33,6 @@ loadMP3  = undefined
 writeMP3 :: IO()
 writeMP3 = undefined --calls: mp3 to bytes, JABEncode, write to IO
 
+-- .\jabcodeWriter --input 'Hello world' --output test.png
 main :: IO()
 main = print "Hello World!"
