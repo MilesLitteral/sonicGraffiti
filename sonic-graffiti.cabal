@@ -26,6 +26,7 @@ source-repository head
 library
   exposed-modules:
       Lib
+      SonicGraffiti
   other-modules:
       Paths_sonic_graffiti
   hs-source-dirs:
