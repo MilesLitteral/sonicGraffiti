@@ -26,14 +26,14 @@ class FromJAB b where
 
 instance ToJAB   BS.ByteString where
     exportJAB input name = do
-        (_, Just hout, _, _) <- createProcess (proc "jabcodeWriter" ["--input", show input, "--output", name ++ ".png"]){ cwd = Just "./", std_out = CreatePipe }
+        (_, Just hout, _, _) <- createProcess (proc "jabcodeWriter.exe" ["--input", show input, "--output", name ++ ".png"]){ cwd = Just "./", std_out = CreatePipe }
         return () --calls: mp3 to bytes, JABEncode, write to IO writeMP3 input "output.png"
     exportJABMatrix inputs name = do
-        mapM_ (\x -> createProcess (proc "jabcodeWriter" ["--input", show x, "--output", name ++ ".png"]){ cwd = Just "./" }) inputs --calls: mp3 to bytes, JABEncode, write to IO writeMP3 input "output.png"
+        mapM_ (\x -> createProcess (proc "jabcodeWriter.exe" ["--input", show x, "--output", name ++ ".png"]){ cwd = Just "./" }) inputs --calls: mp3 to bytes, JABEncode, write to IO writeMP3 input "output.png"
 
 instance FromJAB Text where
     importJAB name = do
-                        (_, Just hout, _, _) <- createProcess (proc "jabcodeReader" ["--output", unpack name]){ cwd = Just "./", std_out = CreatePipe }
+                        (_, Just hout, _, _) <- createProcess (proc "jabcodeReader.exe" ["--output", unpack name]){ cwd = Just "./", std_out = CreatePipe }
                         return ()
     importJABL filePath = do 
                             jab <- BS.readFile filePath
