@@ -7,6 +7,7 @@ module SonicGraffiti.Data (
     , reassembleFromJABCodes
 ) where
 
+-- import MegaStore
 import Data.Text       (Text, unpack)
 import Data.List.Split (chunksOf)
 import System.Process  (createProcess, proc, cwd, std_out, StdStream(CreatePipe))
@@ -53,3 +54,5 @@ reassembleFromJABCodes :: FilePath -> [ByteString] -> IO ()
 reassembleFromJABCodes filePath jabCodes = do
     let fileContents = BS.concat jabCodes
     BS.writeFile filePath fileContents
+
+--wrapAsMegaStore
